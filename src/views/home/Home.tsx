@@ -7,7 +7,7 @@ export default function Home() {
   return (
     <>
       <NavBar />
-      <Banner />
+      <Banner first="Tecnologia" second="Renovada"/>
       <main>
         <div className={styles.productContainer} id="products">
           <a className={styles.productCard} href="./details.html">

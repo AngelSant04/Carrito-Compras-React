@@ -12,7 +12,7 @@ export default function Cart() {
         <span className="hero-span">carrito</span>
       </article>
     </section> */}
-    <Banner />
+    <Banner first="Mi" second="Carrito"/>
     <main>
       <article className={styles.productCart}>
         <img className={styles.productImg} src="https://i.postimg.cc/kX8PKZpq/ipad.jpg" alt="ipad" />
