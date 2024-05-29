@@ -1,11 +1,14 @@
 // import Home from "./views/home/Home";
 
-import Detalle from "./views/detalle/Detalle";
+import Cart from "./views/cart/Cart";
+
+// import Detalle from "./views/detalle/Detalle";
 
 function App() {
   return (
     // <Home />
-    <Detalle />
+    // <Detalle />
+    <Cart />
   );
 }
 
