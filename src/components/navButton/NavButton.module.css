@@ -1,0 +1,32 @@
+
+.navA {
+  color: white;
+  font-weight: 700;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  width: 150px;
+  padding: 5px 0;
+  font-size: 14px;
+}
+.navA:hover {
+  text-decoration: underline;
+}
+/* @media (min-width:576px) {
+    .nav-a {
+      font-size: 12px;
+    }
+  }
+  @media (min-width:768px) {
+    .nav-div {
+      width: 100%;
+    }
+    .nav-a {
+      font-size: 14px;
+    }
+  }
+  @media (min-width:1080px) {
+    nav {
+      width: 1080px;
+    }
+  } */

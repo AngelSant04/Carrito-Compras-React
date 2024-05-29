@@ -1,0 +1,46 @@
+/* HERO SECTION */
+.bannerSection {
+  height: 200px;
+  background: url("public/hero_bg.png");
+  background-size: cover;
+  background-position: top center;
+  display: flex;
+  justify-content: center;
+}
+
+.bannerTitle {
+  width: 1080px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  padding-left: 0 20px;
+}
+.bannerTitle span:first-child {
+  font-size: 20px;
+}
+.bannerTitle span:last-child {
+  font-size: 50px;
+  line-height: 30px;
+}
+.bannerSpan {
+  color: white;
+  font-weight: 700;
+}
+@media (min-width: 680px) {
+  /* .carouselItem img, #hero {
+      height: 210px;
+    } */
+  .bannerTitle span:first-child {
+    font-size: 40px;
+  }
+  .bannerTitle span:last-child {
+    font-size: 100px;
+    line-height: 80px;
+  }
+}
+/* @media (min-width:1080px) {
+    .carouselItem img {
+      object-fit: contain;
+    }
+  } */
