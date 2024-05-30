@@ -1,0 +1,13 @@
+.errorPage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: rgb(102, 124, 219);
+}
+
+.errorContainer {
+  color: white;
+  font-size: 50px;
+  align-items: center;
+}

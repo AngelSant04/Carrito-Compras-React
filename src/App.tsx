@@ -1,14 +1,8 @@
-// import Home from "./views/home/Home";
-
-import Cart from "./views/cart/Cart";
-
-// import Detalle from "./views/detalle/Detalle";
+import Router from "./router/router";
 
 function App() {
   return (
-    // <Home />
-    // <Detalle />
-    <Cart />
+    <Router />
   );
 }
 
