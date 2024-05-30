@@ -1,8 +1,20 @@
 import Footer from "../../components/footer/Footer";
 import NavBar from "../../components/navBar/NavBar";
 import styles from "./Detalle.module.css";
+import products from "../../assets/products.js";
+import { Link, useParams } from "react-router-dom";
 
 export default function Detalle() {
+  const { id } = useParams();
+
+  const productEncontrado = products.find((e) => e.id == id);
+
+  console.log(productEncontrado);
+
+  const cambiosCantidad = (event) => {
+    console.log(event);
+  };
+
   return (
     <>
       <NavBar />
@@ -13,24 +25,24 @@ export default function Detalle() {
               <div className={styles.productImages}>
                 <img
                   className={styles.miniImg}
-                  src="https://i.postimg.cc/HxGQcrcp/mock1.jpg"
-                  alt="MacBook Pro 13'4"
+                  src={productEncontrado.images[0]}
+                  alt={productEncontrado.title}
                 />
                 <img
                   className={styles.miniImg}
-                  src="https://i.postimg.cc/Y91Q1tYQ/mock2.jpg"
-                  alt="MacBook Pro 13'4"
+                  src={productEncontrado.images[1]}
+                  alt={productEncontrado.title}
                 />
               </div>
               <img
                 className={styles.bigImg}
                 id="big-img"
-                src="https://i.postimg.cc/HxGQcrcp/mock1.jpg"
-                alt="MacBook Pro 13'4"
+                src={productEncontrado.images[0]}
+                alt={productEncontrado.title}
               />
             </section>
             <div className={styles.productDescriptionBlock}>
-              <h1 className={styles.productTitle}>MacBook Pro 13'4</h1>
+              <h1 className={styles.productTitle}>{productEncontrado.title}</h1>
               <form className={styles.productSelector}>
                 <fieldset className={styles.productFieldset}>
                   <label className={styles.productLabel} htmlFor="color">
@@ -42,31 +54,24 @@ export default function Detalle() {
                     // placeholder="Selecciona un color"
                     id="color"
                   >
-                    <option value="Silver">Silver</option>
+                    {productEncontrado.colors.map((e) => (
+                      <option key={e} value={e}>
+                        {e}
+                      </option>
+                    ))}
                   </select>
                 </fieldset>
               </form>
               <div className={styles.productDescription}>
                 <span className={styles.productLabel}>Descripción</span>
-                <p>
-                  Experience the power of creativity with the MacBook Pro 13'4.
-                  Featuring 8GB of RAM and 512GB of storage, this laptop
-                  provides the performance and storage capacity needed for
-                  demanding tasks. The sleek design in silver and space gray
-                  adds a touch of sophistication. The high-resolution Retina
-                  display brings your visuals to life, whether you're editing
-                  photos, creating videos, or simply browsing the web. With the
-                  latest technology and a lightweight build, the MacBook Pro
-                  13'4 is the perfect companion for professionals and creative
-                  individuals alike.
-                </p>
+                <p>{productEncontrado.description}</p>
               </div>
             </div>
             <div className={styles.productCheckoutBlock}>
               <div className={styles.checkoutContainer}>
                 <span className={styles.checkoutTotalLabel}>Total:</span>
                 <h2 id="price" className={styles.checkoutTotalPrice}>
-                  $750000
+                  ${productEncontrado.price}
                 </h2>
                 <p className={styles.checkoutDescription}>
                   Incluye impuesto PAIS y percepción AFIP. Podés recuperar AR$
@@ -94,7 +99,12 @@ export default function Detalle() {
                 </ul>
                 <div className={styles.checkoutProcess}>
                   <div className={styles.top}>
-                    <input type="number" min="1" value="1" />
+                    <input
+                      type="number"
+                      min="1"
+                      value="1"
+                      onChange={cambiosCantidad}
+                    />
                     <button type="button" className={styles.cartBtn}>
                       Añadir al Carrito
                     </button>
@@ -106,60 +116,30 @@ export default function Detalle() {
           <div className={styles.salesBlock}>
             <h2 className={styles.salesTitle}>Ofertas de la semana</h2>
             <div id="product-container" className={styles.productContainer}>
-              <a className={styles.productCard} href="./details.html">
-                <img
-                  className={styles.productImg}
-                  src="https://i.postimg.cc/2ymFtsTn/kindle2.jpg"
-                  alt="Kindle Paperwhite"
-                />
-                <div className={styles.productInfo}>
-                  <span className={styles.productTitle}>Kindle Paperwhite</span>
-                  <span className={styles.productDescription}>Black</span>
-                  <div className={styles.productPriceBlock}>
-                    <span className={styles.productPrice}>100000</span>
-                    <span className={styles.productDiscount}>50% Off</span>
-                  </div>
-                  <div className={styles.productTaxPolicy}>
-                    Incluye impuesto País y percepción AFIP
-                  </div>
-                </div>
-              </a>
-              <a className={styles.productCard} href="./details.html">
-                <img
-                  className={styles.productImg}
-                  src="https://i.postimg.cc/2ymFtsTn/kindle2.jpg"
-                  alt="Kindle Paperwhite"
-                />
-                <div className={styles.productInfo}>
-                  <span className={styles.productTitle}>Kindle Paperwhite</span>
-                  <span className={styles.productDescription}>Black</span>
-                  <div className={styles.productPriceBlock}>
-                    <span className={styles.productPrice}>100000</span>
-                    <span className={styles.productDiscount}>50% Off</span>
-                  </div>
-                  <div className={styles.productTaxPolicy}>
-                    Incluye impuesto País y percepción AFIP
-                  </div>
-                </div>
-              </a>
-              <a className={styles.productCard} href="./details.html">
-                <img
-                  className={styles.productImg}
-                  src="https://i.postimg.cc/2ymFtsTn/kindle2.jpg"
-                  alt="Kindle Paperwhite"
-                />
-                <div className={styles.productInfo}>
-                  <span className={styles.productTitle}>Kindle Paperwhite</span>
-                  <span className={styles.productDescription}>Black</span>
-                  <div className={styles.productPriceBlock}>
-                    <span className={styles.productPrice}>100000</span>
-                    <span className={styles.productDiscount}>50% Off</span>
-                  </div>
-                  <div className={styles.productTaxPolicy}>
-                    Incluye impuesto País y percepción AFIP
-                  </div>
-                </div>
-              </a>
+              {products.filter((product) => product.onsale == true).map(e => {
+                return (
+                  <Link className={styles.productCard} to={"details/"+e.id}>
+                    <img
+                      className={styles.productImg}
+                      src= {e.images[0]}
+                      alt={e.title}
+                    />
+                    <div className={styles.productInfo}>
+                      <span className={styles.productTitle}>
+                        {e.title}
+                      </span>
+                      <span className={styles.productDescription}>Black</span>
+                      <div className={styles.productPriceBlock}>
+                        <span className={styles.productPrice}>{e.price}</span>
+                        <span className={styles.productDiscount}>50% Off</span>
+                      </div>
+                      <div className={styles.productTaxPolicy}>
+                        Incluye impuesto País y percepción AFIP
+                      </div>
+                    </div>
+                  </Link>
+                );
+              })}
             </div>
           </div>
         </div>
