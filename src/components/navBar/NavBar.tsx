@@ -10,7 +10,7 @@ export default function NavBar() {
           <Link to="/" className={styles.headerLogo}>
             <img
               className={styles.headerLogoImg}
-              src="./tiendamia-logo.svg"
+              src="../../../public/tiendamia-logo.svg"
               width="218"
               alt="Logo store"
             />

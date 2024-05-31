@@ -1,0 +1,77 @@
+/* CHECKOUT */
+.productCheckoutBlock {
+  flex-direction: column;
+  width: 340px;
+  padding: 10px;
+  margin: 10px;
+}
+.checkoutContainer {
+  background-color: #ebebeb;
+  padding: 33px;
+  border-radius: 2px;
+}
+.checkoutTotalLabel {
+  color: #ff3b3c;
+}
+.checkoutTotalPrice {
+  font-size: 28px;
+  font-weight: 700;
+  margin-top: 10px;
+}
+.checkoutDescription {
+  line-height: 20.4px;
+  word-wrap: break-word;
+}
+.checkoutPolicyList {
+  padding: 0;
+  list-style-type: none;
+  margin-bottom: 30px;
+}
+.checkoutPolicyList li {
+  display: flex;
+  margin: 15px 0;
+}
+.checkoutPolicyList li .policyIcon {
+  margin-right: 15px;
+}
+.checkoutProcess {
+  row-gap: 20px;
+}
+.checkoutProcess .top {
+  display: flex;
+  margin-bottom: 10px;
+}
+.checkoutProcess .top input {
+  height: 40px;
+  border-radius: 10px;
+  border: none;
+  width: 62px;
+  margin-right: 10px;
+  padding: 0 10px 0 20px;
+  box-sizing: border-box;
+}
+.cartBtn {
+  width: 100%;
+  background: #ff3b3c;
+  color: white;
+  font-weight: bold;
+  border: none;
+  height: 40px;
+  border-radius: 10px;
+}
+.cartBtn:hover {
+  background: #ff5151;
+}
+.cartBtnBlack {
+  width: 100%;
+  background: #000000; /* Fondo negro */
+  color: white;
+  font-weight: bold;
+  border: none;
+  height: 40px;
+  border-radius: 10px;
+}
+
+.cartBtnBlack:hover {
+  background: #333333; /* Fondo gris oscuro en hover */
+}

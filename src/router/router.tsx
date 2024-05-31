@@ -18,17 +18,18 @@ function Router() {
       <RouterProvider router={browserRouter} />
     </>
   );
-  //   return (
-  //     <div>
-  //       <BrowserRouter>
-  //         <Routes>
-  //           <Route path="/" element={<Home />} />
-  //           <Route path="*" element={<ErrorPage />} />
-  //           <Route path="/home" element={<Home />} />
-  //         </Routes>
-  //       </BrowserRouter >
-  //     </div >
-  //   );
+    // return (
+    //   <div>
+    //     <BrowserRouter>
+    //       <Routes>
+    //         <Route path="/" element={<Home />} />
+    //         <Route path="*" element={<ErrorPage />} />
+    //         <Route path="/cart" element={<Cart />} />
+    //         <Route path="/details/:id" element={<Detalle />} />
+    //       </Routes>
+    //     </BrowserRouter >
+    //   </div >
+    // );
 }
 
 export default Router;

@@ -4,14 +4,15 @@ import NavBar from "../../components/navBar/NavBar";
 import styles from "./Cart.module.css";
 
 export default function Cart() {
+
+  console.log("holamundo");
+  
+  const cambiosCantidad = (event) => {
+    console.log(event);
+  };
+
   return <>
     <NavBar />
-    {/* <section className="hero-section">
-      <article className="hero-title">
-        <span className="hero-span">mi</span>
-        <span className="hero-span">carrito</span>
-      </article>
-    </section> */}
     <Banner first="Mi" second="Carrito"/>
     <main>
       <article className={styles.productCart}>
@@ -19,7 +20,7 @@ export default function Cart() {
         <div className={styles.productDetails}>
           <strong className={styles.productTitle}>iPad Pro 13</strong><span className={styles.productDescription}>- Silver</span>
           <p className={styles.productDescription}>The iPad Pro 13 is a stunning piece of technology, boasting a large 12.9-inch Retina display with ProMotion technology. With 256GB of storage, this iPad provides ample space for all your files, apps, and multimedia content. The sleek and slim design, combined with the silver color, gives it a sophisticated look. Enjoy seamless connectivity with the WiFi feature. Capture your memorable moments with the high-quality camera and relive them on the impressive screen. Whether you're a professional artist, student, or just someone who appreciates cutting-edge technology, the iPad Pro 12.9 is a versatile device that meets all your needs.</p>
-          <input className={styles.productInput} type="number" name="quantity" value="1" min="1" id="P7Q8R90" />
+          <input className={styles.productInput} type="number" name="quantity" value="1" min="1" id="P7Q8R90" onChange={cambiosCantidad}/>
         </div>
         <strong className={styles.price}>AR$ $800000</strong>
       </article>
