@@ -4,9 +4,6 @@ import NavBar from "../../components/navBar/NavBar";
 import styles from "./Cart.module.css";
 
 export default function Cart() {
-
-  console.log("holamundo");
-  
   const cambiosCantidad = (event) => {
     console.log(event);
   };

@@ -12,9 +12,6 @@ export default function Detalle() {
 
   const productEncontrado = products.find((e:any) => e.id == id);
 
-  console.log(productEncontrado);
-
-
   return (
     <>
       <NavBar />

@@ -1,25 +1,36 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styles from "./Checkout.module.css";
 
 export default function Checkout(props) {
   const { product: productEncontrado } = props;
-
-  const cambiosCantidad = (event) => {
-    setCantidad(event?.target.value);
-  };
-
   const [cantidad, setCantidad] = useState(1);
   const [button, setButton] = useState(false);
 
   let productsInStorage : any = [];
 
-  !localStorage.getItem("cart")
+  useEffect(() => {
+    crearCart();
+    validateProductInCart();
+  }, []); 
+
+  const crearCart = () => {
+    !localStorage.getItem("cart")
     ? localStorage.setItem("cart", JSON.stringify([]))
     : (productsInStorage = JSON.parse(localStorage.getItem("cart")!));
+  }
+
+  const validateProductInCart = () => {
+    const existe = productsInStorage.find((each:any) => each.id === productEncontrado.id);
+    if (existe) {
+      setButton(true);
+    }
+  }
+
+  const cambiosCantidad = (event) => {
+    setCantidad(event?.target.value);
+  };
 
   const agregarProducto = () => {
-
-    
     const existe = productsInStorage.find((each:any) => each.id === productEncontrado.id);
     if (!existe) {
       productsInStorage.push(productEncontrado);
