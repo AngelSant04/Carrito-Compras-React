@@ -26,7 +26,7 @@ export default function Detalle() {
             <div id="product-container" className={styles.productContainer}>
               {products.filter((product) => product.onsale == true).map(e => {
                 return (
-                  <Link key={e.id} className={styles.productCard} to={"details/"+e.id}>
+                  <Link key={e.id} className={styles.productCard} to={"/details/"+e.id}>
                     <img
                       className={styles.productImg}
                       src= {e.images[0]}
