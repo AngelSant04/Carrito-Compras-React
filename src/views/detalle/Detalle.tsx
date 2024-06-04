@@ -9,7 +9,6 @@ import Checkout from "../../components/checkout/Checkout.js";
 
 export default function Detalle() {
   const { id } = useParams();
-
   const productEncontrado = products.find((e:any) => e.id == id);
 
   return (

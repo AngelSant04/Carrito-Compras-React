@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import styles from "./Checkout.module.css";
 
 export default function Checkout(props) {
@@ -6,42 +6,97 @@ export default function Checkout(props) {
   const [cantidad, setCantidad] = useState(1);
   const [button, setButton] = useState(false);
 
-  let productsInStorage : any = [];
+  // let productsInStorage: any = [];
+
+  const units = useRef(1);
+
+  // useEffect(() => {
+  //   crearCart();
+  //   validateProductInCart();
+  // }, []);
 
   useEffect(() => {
-    crearCart();
-    validateProductInCart();
-  }, []); 
-
-  const crearCart = () => {
-    !localStorage.getItem("cart")
-    ? localStorage.setItem("cart", JSON.stringify([]))
-    : (productsInStorage = JSON.parse(localStorage.getItem("cart")!));
-  }
-
-  const validateProductInCart = () => {
-    const existe = productsInStorage.find((each:any) => each.id === productEncontrado.id);
-    if (existe) {
-      setButton(true);
+    let productsOnCart = [];
+    if (localStorage.getItem("cart")) {
+      productsOnCart = JSON.parse(localStorage.getItem("cart")!);
+    } else {
+      localStorage.setItem("cart", JSON.stringify([]));
     }
-  }
-
-  const cambiosCantidad = (event) => {
-    setCantidad(event?.target.value);
-  };
-
-  const agregarProducto = () => {
-    const existe = productsInStorage.find((each:any) => each.id === productEncontrado.id);
-    if (!existe) {
-      productsInStorage.push(productEncontrado);
+    const one: any = productsOnCart.find(
+      (item: any) => item.id === productEncontrado.id
+    );
+    if (one) {
+      setCantidad(one.cantidad);
       setButton(true);
     } else {
-      productsInStorage = productsInStorage.filter(
+      setCantidad(1);
+      setButton(false);
+    }
+  }, [productEncontrado.id]);
+
+  // useEffect(() => {
+  //   crearCart();
+  //   addCantidadProducto();
+  // }, [cantidad]);
+
+  // const crearCart = () => {
+  //   !localStorage.getItem("cart")
+  //     ? localStorage.setItem("cart", JSON.stringify([]))
+  //     : (productsInStorage = JSON.parse(localStorage.getItem("cart")!));
+  // };
+
+  // const validateProductInCart = () => {
+  //   const existe = productsInStorage.find(
+  //     (each: any) => each.id === productEncontrado.id
+  //   );
+  //   if (existe) {
+  //     setButton(true);
+  //     setCantidad(existe.cantidad);
+  //   }
+  // };
+
+  // const addCantidadProducto = () => {
+  //   const existe = productsInStorage.find((each:any) => each.id === productEncontrado.id);
+  //   if (existe) {
+  //     setCantidad(Number(units.current.value));
+  //   }
+  // }
+
+  // const cambiosCantidad = (event) => {
+  //   setCantidad(event?.target.value);
+  // };
+
+  const agregarProducto = () => {
+    let productsOnCart = [];
+    if (localStorage.getItem("cart")) {
+      productsOnCart = JSON.parse(localStorage.getItem("cart")!);
+    }
+    const one = productsOnCart.find((each:any) => each.id === productEncontrado.id);
+    if (!one) {
+      productEncontrado.cantidad = Number(units.current.value);
+      productsOnCart.push(productEncontrado);
+      setButton(true);
+    } else {
+      productsOnCart = productsOnCart.filter(
         (each:any) => each.id !== productEncontrado.id
       );
       setButton(false);
     }
-    localStorage.setItem("cart", JSON.stringify(productsInStorage));
+    localStorage.setItem("cart", JSON.stringify(productsOnCart));
+    // const existe = productsInStorage.find(
+    //   (each: any) => each.id === productEncontrado.id
+    // );
+    // if (!existe) {
+    //   productEncontrado.cantidad = cantidad;
+    //   productsInStorage.push(productEncontrado);
+    //   setButton(true);
+    // } else {
+    //   productsInStorage = productsInStorage.filter(
+    //     (each: any) => each.id !== productEncontrado.id
+    //   );
+    //   setButton(false);
+    // }
+    // localStorage.setItem("cart", JSON.stringify(productsInStorage));
   };
 
   return (
@@ -80,8 +135,11 @@ export default function Checkout(props) {
               <input
                 type="number"
                 min="1"
-                defaultValue={cantidad}
-                onChange={cambiosCantidad}
+                // defaultValue={cantidad}
+                value={cantidad}
+                ref={units}
+                // onChange={cambiosCantidad}
+                onChange={() => setCantidad(Number(units.current.value))}
               />
               <button
                 type="button"
