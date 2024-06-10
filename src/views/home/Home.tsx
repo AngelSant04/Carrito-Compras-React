@@ -2,7 +2,7 @@ import Banner from "../../components/banner/Banner";
 import Footer from "../../components/footer/Footer";
 import NavBar from "../../components/navBar/NavBar";
 import ProductCard from "../../components/productCard/ProductCard";
-import styles from "./Home.module.css";
+// import styles from "./Home.module.css";
 import products from '../../assets/products.js';
 
 export default function Home() {
@@ -11,7 +11,7 @@ export default function Home() {
       <NavBar />
       <Banner first="Tecnologia" second="Renovada"/>
       <main>
-        <div className={styles.productContainer} id="products">
+        <div className="w-[1080px] flex flex-wrap justify-between" id="products">
           {
             products.map((e) => (
               <ProductCard 
