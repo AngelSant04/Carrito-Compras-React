@@ -1,18 +1,19 @@
 import { useState, useEffect } from "react";
 import styles from "./Thumbs.module.css";
+import ProductProp from "../../interfaces/ProductProp";
 
-export default function Thumbs(props) {
+export default function Thumbs(props: ProductProp) {
   const { product } = props;
 
-  const [thumb, setThumb] = useState(product.images[0] || "/mock1.jpg");
+  const [thumb, setThumb] = useState(product.images![0] || "/mock1.jpg");
 
-  useEffect(() => setThumb(product.images[0]), [product.id]);
+  useEffect(() => setThumb(product.images![0]), [product.id]);
 
   return (
     <>
       <section className={styles.productImagesBlock}>
         <div className={styles.productImages}>
-          {product.images.map((each) => (
+          {product.images!.map((each) => (
             <img
               className={styles.miniImg}
               key={each}

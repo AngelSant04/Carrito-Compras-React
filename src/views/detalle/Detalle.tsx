@@ -6,10 +6,12 @@ import { Link, useParams } from "react-router-dom";
 import Thumbs from "../../components/thumbs/Thumbs.js";
 import Description from "../../components/description/Description.js";
 import Checkout from "../../components/checkout/Checkout.js";
+import Product from "../../interfaces/Product.js";
+import ProductCard from "../../interfaces/ProductCard.js";
 
 export default function Detalle() {
   const { id } = useParams();
-  const productEncontrado = products.find((e:any) => e.id == id);
+  const productEncontrado : ProductCard = products.find((e:Product) => e.id == id);
 
   return (
     <>
@@ -24,12 +26,12 @@ export default function Detalle() {
           <div className={styles.salesBlock}>
             <h2 className={styles.salesTitle}>Ofertas de la semana</h2>
             <div id="product-container" className={styles.productContainer}>
-              {products.filter((product) => product.onsale == true).map(e => {
+              {products.filter((product) => product.onsale == true).map((e:Product) => {
                 return (
                   <Link key={e.id} className={styles.productCard} to={"/details/"+e.id}>
                     <img
                       className={styles.productImg}
-                      src= {e.images[0]}
+                      src= {e.images![0]}
                       alt={e.title}
                     />
                     <div className={styles.productInfo}>
