@@ -6,7 +6,7 @@ export default function CartCard(props) {
   const units: any = useRef();
 
   const cambiosCantidad = () => {
-    let productsOnCart = JSON.parse(
+    const productsOnCart = JSON.parse(
       localStorage.getItem("cart")!
     );
     const one = productsOnCart.find((each) => each.id === id);

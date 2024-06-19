@@ -4,6 +4,7 @@ import CardResume from "../../components/cardResume/CardResume";
 import Footer from "../../components/footer/Footer";
 import NavBar from "../../components/navBar/NavBar";
 import { useEffect, useState } from "react";
+import Product from "../../interfaces/Product";
 
 export default function Cart() {
   const [productosEnCarrito, setProductos] = useState([]);
@@ -21,16 +22,16 @@ export default function Cart() {
       <Banner first="Mi" second="Carrito" />
       <main>
         <section className="flex flex-col">
-          {productosEnCarrito.map((each: any) => (
+          {productosEnCarrito.map((each: Product) => (
             <CartCard
               key={each.id}
               id = {each.id}
               titulo={each.title}
-              foto={each.images[0]}
-              descripcion={each.Description}
+              foto={each.images![0]}
+              descripcion={each.description}
               precio={each.price}
               cantidad={each.cantidad}
-              color={each.colors[0]}
+              color={each.colors![0]}
             />
           ))}
         </section>

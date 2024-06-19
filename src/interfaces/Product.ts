@@ -9,4 +9,5 @@ export default interface Product {
   colors?: Array<string>;
   image?: string;
   color?: string;
+  onsale?: boolean;
 }
