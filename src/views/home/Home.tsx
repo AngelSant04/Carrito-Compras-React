@@ -7,6 +7,7 @@ import ProductCard from "../../components/productCard/ProductCard";
 // import products from '../../assets/products.js';
 import Product from "../../interfaces/Product.js";
 import useAxios from "../../hooks/useFetch.js";
+import { useSelector } from "react-redux";
 
 export default function Home() {
   const [products, setProducts] = useState<Product[]>([]);
@@ -16,11 +17,15 @@ export default function Home() {
     method: 'GET',
   });
 
+  const text = useSelector(store => store.products.text)
+
   useEffect(() => {
     if (data) {
-      setProducts(data!);
+      const filterData = data!.filter((each) => each.title.toLowerCase().includes(text.toLowerCase()))
+      setProducts(filterData!);
     }
-  }, [data]);
+  }, [text]);
+
 
   return (
     <>

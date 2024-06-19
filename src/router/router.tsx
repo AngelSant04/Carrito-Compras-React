@@ -4,6 +4,8 @@ import Cart from "../views/cart/Cart";
 import Detalle from "../views/detalle/Detalle";
 import Home from "../views/home/Home";
 import ErrorPage from "../views/notFound/NotFound";
+import { Provider } from "react-redux";
+import store from "../store";
 
 
 function Router() {
@@ -14,9 +16,9 @@ function Router() {
     { path: "*", element: <ErrorPage /> },
   ]);
   return (
-    <>
+    <Provider store={store}>
       <RouterProvider router={browserRouter} />
-    </>
+    </Provider>
   );
     // return (
     //   <div>

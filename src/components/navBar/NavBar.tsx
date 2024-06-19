@@ -1,8 +1,22 @@
 import styles from "./NavBar.module.css";
 import NavButton from "../navButton/NavButton";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+import { useRef } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import productsActions from "../../store/actions/products";
+
+const { captureText } = productsActions;
 
 export default function NavBar() {
+  const text: any = useRef();
+  const dispatch = useDispatch();
+  const location = useLocation();
+  const pathname = location.pathname;
+  const setText = () => {
+    dispatch(captureText({ text: text.current.value }));
+  };
+  const textStore = useSelector((store) => store.products.text);
+
   return (
     <>
       <header>
@@ -16,12 +30,17 @@ export default function NavBar() {
             />
           </Link>
           <form className={styles.headerForm}>
-            <input
-              className={styles.headerInput}
-              type="text"
-              placeholder="Search"
-              id="search"
-            />
+            { pathname === '/' &&
+              (<input
+                className={styles.headerInput}
+                defaultValue={textStore}
+                type="text"
+                placeholder="Search"
+                id="search"
+                ref={text}
+                onChange={setText}
+              />)
+            }
           </form>
           <ul className={styles.headerSocial}>
             <li id="facebook" className={styles.headerLi}>
@@ -51,11 +70,11 @@ export default function NavBar() {
           </ul>
         </div>
         <nav id="navbar">
-          <NavButton link="/" titulo="Ofertas"/>
-          <NavButton link="/" titulo="Cómo comprar"/>
-          <NavButton link="/" titulo="Costos y Tarifas"/>
-          <NavButton link="/" titulo="Mis Pedidos"/>
-          <NavButton link="/" titulo="Garantía"/>
+          <NavButton link="/" titulo="Ofertas" />
+          <NavButton link="/" titulo="Cómo comprar" />
+          <NavButton link="/" titulo="Costos y Tarifas" />
+          <NavButton link="/" titulo="Mis Pedidos" />
+          <NavButton link="/" titulo="Garantía" />
         </nav>
       </header>
     </>
