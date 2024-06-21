@@ -1,4 +1,12 @@
-export default function CardResume({total}) {
+import { useSelector } from "react-redux";
+
+export default function CardResume() {
+
+  const total = useSelector((store) => store.products.total);
+
+  console.log(total);
+  
+
   return (
     <>
       <div className="bg-[#f2f2f2] rounded p-7 m-2 h-[220px] break-words flex justify-between w-[340px] flex-col">

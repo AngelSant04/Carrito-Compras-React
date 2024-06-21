@@ -5,14 +5,20 @@ import Footer from "../../components/footer/Footer";
 import NavBar from "../../components/navBar/NavBar";
 import { useEffect, useState } from "react";
 import Product from "../../interfaces/Product";
+import { useDispatch } from "react-redux";
+import productsActions from "../../store/actions/products";
+
+const { captureTotal } = productsActions;
 
 export default function Cart() {
   const [productosEnCarrito, setProductos] = useState([]);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     if (localStorage.getItem("cart")) {
       const products = JSON.parse(localStorage.getItem("cart")!);
       setProductos(products);
+      dispatch(captureTotal({products: products}))
     }
   }, []);
 
@@ -36,7 +42,7 @@ export default function Cart() {
           ))}
         </section>
         {/* <CartCard titulo="Ipad 14 pro" color="black" /> */}
-        <CardResume total="800000" />
+        <CardResume />
       </main>
       <Footer />
     </>

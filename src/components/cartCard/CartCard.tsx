@@ -1,19 +1,31 @@
 import { useRef } from "react";
+import { useDispatch } from "react-redux";
+import productsActions from "../../store/actions/products";
+import Product from "../../interfaces/Product";
+
+const { captureTotal } = productsActions;
 
 export default function CartCard(props) {
   const { id, titulo, foto, descripcion, precio, cantidad, color } = props;
 
   const units: any = useRef();
+  const dispatch = useDispatch();
 
   const cambiosCantidad = () => {
-    const productsOnCart = JSON.parse(
-      localStorage.getItem("cart")!
-    );
-    const one = productsOnCart.find((each) => each.id === id);
-    console.log("one: ", one);
-    
-    one.cantidad = Number(units.current.value);
-    localStorage.setItem("cart", JSON.stringify(productsOnCart));
+    // const productsOnCart = JSON.parse(
+    //   localStorage.getItem("cart")!
+    // );
+    const productsOnCart = localStorage.getItem("cart");
+    let products = [];
+    if (productsOnCart) {
+      products = JSON.parse(productsOnCart);
+    }
+    const one:any = products?.find((each: Product) => each.id === id);
+    if (one) {
+      one.cantidad = Number(units.current.value);
+      localStorage.setItem("cart", JSON.stringify(productsOnCart));
+      dispatch(captureTotal({products}))
+    }
   };
 
   return (
